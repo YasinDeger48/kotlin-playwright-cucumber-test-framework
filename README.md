@@ -1,55 +1,57 @@
 # KotlinTestFramework
 
-Cok basit bir Kotlin test framework ornegi.
+A very simple Kotlin test framework example.
 
 - Cucumber + JUnit 5
-- API testleri: Rest Assured
-- UI testleri: Playwright
+- API tests: Rest Assured
+- UI tests: Playwright
 
-## Lokal calistirma
+You can also use Playwright APIs for API testing, but in this project I preferred Rest Assured for API scenarios.
 
-Gereksinim: Java 17 ve Maven.
+## Run Locally
+
+Requirements: Java 17 and Maven.
 
 ```bash
 mvn test
 ```
 
-Sadece API testleri:
+Run only API tests:
 
 ```bash
 mvn test -Dcucumber.filter.tags="@api"
 ```
 
-`qa` config ile:
+Run with `qa` config:
 
 ```bash
 mvn test -Denv=qa
 ```
 
-## Docker ile calistirma
+## Run with Docker
 
-Image olustur:
+Build image:
 
 ```bash
 docker build -t kotlin-test-framework .
 ```
 
-Tum testleri calistir:
+Run all tests:
 
 ```bash
 docker run --rm kotlin-test-framework
 ```
 
-Sadece API testleri:
+Run only API tests:
 
 ```bash
 docker run --rm -e CUCUMBER_FILTER_TAGS="@api" kotlin-test-framework
 ```
 
-`qa` config ile:
+Run with `qa` config:
 
 ```bash
 docker run --rm -e TEST_ENV=qa kotlin-test-framework
 ```
 
-Not: Container icinde UI testleri icin varsayilan olarak `UI_HEADLESS=true` kullanilir.
+Note: Inside the container, `UI_HEADLESS=true` is used by default for UI tests.
